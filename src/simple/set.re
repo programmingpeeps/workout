@@ -1,12 +1,16 @@
 let component = ReasonReact.statelessComponent "Set";
 
 let setToString (set: Types.set) => {
-  "weight: " ^ (string_of_float set.weight) ^ " " ^
-  "reps: " ^ (string_of_int set.reps)
+  <dl>
+  <dt>(ReasonReact.stringToElement "weight")</dt>
+  <dd>(ReasonReact.stringToElement (string_of_float set.weight))</dd>
+  <dt>(ReasonReact.stringToElement "reps")</dt>
+  <dd>(ReasonReact.stringToElement (string_of_int set.reps))</dd>
+  </dl>
 };
 
 let make ::set _children => {
   ...component,
   render: fun self =>
-    <div> (ReasonReact.stringToElement (setToString set)) </div>
+    <div> (setToString set) </div>
 };
